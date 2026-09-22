@@ -5,9 +5,12 @@ Vanilla **Stone** has no dig output.
 This mod drops **Gravel** when stone is drilled or lasered.
 Belt gravel onto a **Shaker**, then run a short **steel** line.
 
+Steel loop details and diagrams: [`docs/steel.md`](docs/steel.md).
+
 ## Status
 
 Early experiment.
+Design notes live in [`docs/ideas.md`](docs/ideas.md).
 
 ## Current behavior (v0.0.3)
 
@@ -41,6 +44,7 @@ Early experiment.
 | `crushed-iron/` | Crushed Iron element |
 | `molten-steel/` | Molten Steel element |
 | `steel/` | Steel element + step 1 recipes |
+| `docs/` | Design notes (`ideas.md`, `steel.md`) |
 | `shaker/` | Worker: exclusive even pick on gravel |
 | `worker.ts` | Worker entry |
 

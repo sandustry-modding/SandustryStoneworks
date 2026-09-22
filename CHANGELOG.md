@@ -6,6 +6,7 @@
 - Added: Kinetic Press recipe (Iron Ore → Crushed Iron).
 - Added: Smelter recipe (Crushed Iron → Molten Steel).
 - Added: Contact (Molten Steel + Coal → Steel).
+- Added: [`docs/steel.md`](docs/steel.md) with mermaid gameplay loops.
 
 ## 0.0.2
 
