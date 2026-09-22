@@ -3,21 +3,25 @@
 Temporary stone refining line for Sandustry.
 Vanilla **Stone** has no dig output.
 This mod drops **Gravel** when stone is drilled or lasered.
+Belt gravel onto a **Shaker** for crushed stone, iron ore, or coal.
 
 ## Status
 
 Experiment / `tmp` id.
-Design notes live in [`ideas.md`](ideas.md).
 
-## Current behavior (v0)
+## Current behavior (v0.0.2)
 
-- Registers **Gravel** (mod powder, grabbable, belt-friendly).
+- Registers **Gravel** (mod **slushy**, like wet sand — grabbable, belt-friendly).
 - Sets Stone excavation `output` to gravel at chance `1`.
 - Laser already digs with `fromDrill`, so drill and laser both drop gravel.
+- Shaker (vanilla): gravel becomes **exactly one** of:
+  - **Crushed Stone** — stays on the shaker (up)
+  - **Iron Ore** / **Coal** — eject below (even odds with crushed stone)
+  - Crushed Stone density **120** (lighter than gravel **150**)
 
 ## Options
 
-- **Mod enabled** — turn stone gravel drops off without unsubscribing.
+- **Mod enabled** — turn the mod off without unsubscribing.
 
 ## Folder layout
 
@@ -27,9 +31,11 @@ Design notes live in [`ideas.md`](ideas.md).
 | `modinfo.ts` | Manifest and config schema |
 | `shared/` | Element ids and i18n keys |
 | `gravel/` | Gravel element + Stone dig output |
-| `ideas.md` | Design notes for the refining line |
-
-Later stages (shaker recipes, crush, wash, sinks) get their own feature folders.
+| `crushed-stone/` | Crushed Stone element |
+| `iron-ore/` | Iron Ore element |
+| `coal/` | Coal element |
+| `shaker/` | Worker: exclusive even pick on gravel |
+| `worker.ts` | Worker entry |
 
 ## Changelog
 
