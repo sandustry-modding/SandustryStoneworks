@@ -1,8 +1,16 @@
 # Changelog
 
+## 0.0.3
+
+- Added: Steel line step 1 — **Crushed Iron**, **Molten Steel**, **Steel**.
+- Added: Kinetic Press recipe (Iron Ore → Crushed Iron).
+- Added: Smelter recipe (Crushed Iron → Molten Steel).
+- Added: Contact (Molten Steel + Coal → Steel).
+
 ## 0.0.2
 
-- Added: **Crushed Stone**, **Iron Ore**, and **Coal**.
+- Renamed mod to **Stoneworks** (`irishbruse.stoneworks`).
+- Added: **Crushed Stone**, **Iron Ore**, and **Coal** powders.
 - Added: Shaker — gravel becomes **one** of crushed stone (up) / iron ore or coal (down) at even odds.
 - Changed: **Gravel** uses **Slushy** matter (wet-sand fall), not Powder.
 - Changed: Iron Ore colors to hematite rust palette.
