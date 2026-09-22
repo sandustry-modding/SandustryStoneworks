@@ -2,7 +2,7 @@ import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
 
 const api = sandkit.api;
 
-/** Register coal powder (rare shaker out; no fuel use yet). */
+/** Register coal (heavy slushy; shaker down). */
 export function register(): void {
   api.i18n.register("en", {
     [NAME_KEY.coal]: "Coal",
@@ -11,8 +11,8 @@ export function register(): void {
   const { elementType } = api.elements.register({
     id: ELEMENT.coal,
     nameKey: NAME_KEY.coal,
-    density: 140,
-    matterType: sandkit.enums.MatterType.Powder,
+    density: 280,
+    matterType: sandkit.enums.MatterType.Slushy,
     metaColor: 0x2a2a2e,
     colors: {
       variants: [

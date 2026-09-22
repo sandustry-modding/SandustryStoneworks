@@ -12,7 +12,7 @@ export function register(): void {
     id: ELEMENT.crushedIron,
     nameKey: NAME_KEY.crushedIron,
     density: 240,
-    matterType: sandkit.enums.MatterType.Powder,
+    matterType: sandkit.enums.MatterType.Solid,
     metaColor: 0x7a4030,
     colors: {
       variants: [

@@ -23,8 +23,8 @@ Design notes live in [`docs/ideas.md`](docs/ideas.md).
   - Crushed Stone density **120** (lighter than gravel **150**)
 - Steel line (step 1):
   - **Kinetic Press:** Iron Ore → **Crushed Iron**
-  - **Smelter:** Crushed Iron → **Molten Steel** (needs heat)
-  - **Contact:** Molten Steel + Coal → **Steel** (coal consumed)
+  - **Smelter:** Crushed Iron → **Molten Iron** (needs heat)
+  - **Neighbor rule:** Coal with **2 molten iron** neighbors → **Steel** (consumes coal + both irons)
 
 ## Options
 
@@ -42,7 +42,7 @@ Design notes live in [`docs/ideas.md`](docs/ideas.md).
 | `iron-ore/` | Iron Ore element |
 | `coal/` | Coal element |
 | `crushed-iron/` | Crushed Iron element |
-| `molten-steel/` | Molten Steel element |
+| `molten-iron/` | Molten Iron element |
 | `steel/` | Steel element + step 1 recipes |
 | `docs/` | Design notes (`ideas.md`, `steel.md`) |
 | `shaker/` | Worker: exclusive even pick on gravel |

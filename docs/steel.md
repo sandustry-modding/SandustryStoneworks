@@ -1,8 +1,14 @@
 # Steel line
 
 Iron and coal from the gravel shaker feed a short **steel** factory.
-Vanilla machines only: **Kinetic Press**, **Smelter**, and element **contact**.
+Vanilla machines: **Kinetic Press** and **Smelter**.
+Steel finish is a **neighbor rule** on the worker (not a contact recipe).
 No vanilla gold / copper / sand in this loop.
+
+Smelting alone makes **molten iron**.
+**Coal** surrounded by **two molten iron** neighbors becomes **steel** in one step.
+
+**Net recipe:** 2 molten iron + 1 coal → 1 steel (no middle product).
 
 ## Step 1 (shipped)
 
@@ -10,8 +16,8 @@ No vanilla gold / copper / sand in this loop.
 | --- | --- | --- |
 | 0 (hub) | Drill / laser + Shaker | Stone → Gravel → **Iron Ore** (down) + **Coal** (down) |
 | 1a | Kinetic Press | **Iron Ore** → **Crushed Iron** |
-| 1b | Smelter (needs heat) | **Crushed Iron** → **Molten Steel** |
-| 1c | Contact | **Molten Steel** + **Coal** → **Steel** + (coal consumed) |
+| 1b | Smelter (needs heat) | **Crushed Iron** → **Molten Iron** |
+| 1c | Neighbor rule | **Coal** with **2 molten iron** neighbors → **Steel** (consumes coal + both irons) |
 
 **Steel** is the usable product for now (no further sink yet).
 
@@ -25,12 +31,24 @@ flowchart TD
   gravel -->|Shaker| coal[Coal down]
 
   ironOre -->|Kinetic Press| crushedIron[Crushed Iron]
-  crushedIron -->|Smelter + heat| molten[Molten Steel]
-  molten -->|contact| steel[Steel]
-  coal -->|contact with molten| steel
+  crushedIron -->|Smelter + heat| moltenIron[Molten Iron]
+  moltenIron -->|2 neighbors of coal| steel[Steel]
+  coal -->|center cell| steel
 
   crushedStone -.->|later| unused[Unused in step 1]
 ```
+
+### Neighbor finish
+
+```mermaid
+flowchart LR
+  MI1[Molten Iron] --- C[Coal]
+  MI2[Molten Iron] --- C
+  C -->|one step| ST[Steel]
+```
+
+Coal must have **at least two** molten-iron cells in its 8-neighborhood.
+Those two irons and the coal are removed; **Steel** appears where the coal was.
 
 ### Step 1 factory street
 
@@ -48,15 +66,15 @@ flowchart LR
 
   subgraph heatBay [Heat]
     SM[Smelter]
-    MS[Molten Steel]
+    MI[Molten Iron]
   end
 
-  subgraph finish [Finish]
+  subgraph finish [Finish pool]
     ST[Steel]
   end
 
-  IO --> KP --> CI --> SM --> MS
-  MS --> ST
+  IO --> KP --> CI --> SM --> MI
+  MI --> ST
   C --> ST
 ```
 
@@ -68,24 +86,24 @@ sequenceDiagram
   participant Sh as Shaker
   participant Pr as Kinetic Press
   participant Sm as Smelter
-  participant Ct as Contact
+  participant W as Worker rule
 
   P->>Sh: Belt gravel
   Sh-->>P: Iron Ore below
   Sh-->>P: Coal below
   P->>Pr: Drop Iron Ore with speed
   Pr-->>P: Crushed Iron
-  P->>Sm: Crushed Iron on smelter + lava/relay heat
-  Sm-->>P: Molten Steel
-  P->>Ct: Molten Steel touches Coal
-  Ct-->>P: Steel
+  P->>Sm: Crushed Iron on smelter + heat
+  Sm-->>P: Molten Iron
+  P->>W: Pool two molten iron against one coal
+  W-->>P: Steel
 ```
 
 ## Why this shape
 
 - **Press** matches Ex Nihilo “hammer ore → crushed.”
-- **Smelter** matches “melt for metal” and reuses vanilla heat rules (relay / lava).
-- **Coal finishes molten → steel** so both shaker downs matter in step 1.
+- **Smelter** melts iron only — no steel without carbon.
+- **2 molten iron neighbors on coal** is one conversion, no pig-iron middle step, and forces pooling.
 - **Crushed Stone** stays out of the steel line for now (see [`ideas.md`](ideas.md)).
 
 ## Later (not step 1)
@@ -103,14 +121,14 @@ flowchart TD
 | Steel blocks | Compress / build sink |
 | Coal as heat | Replace or assist lava under smelter |
 | Iron dust | Extra press / wash before smelt |
-| Quench with water | Alternate finish instead of coal |
+| Quench with water | Cool molten iron without making steel |
 
 ## Element quick ref
 
 | Element | Matter | Role |
 | --- | --- | --- |
-| Iron Ore | Powder | Shaker down |
-| Coal | Powder | Shaker down; finishes molten → steel |
-| Crushed Iron | Powder | Press product; smelter feed |
-| Molten Steel | Liquid | Smelter product |
-| Steel | Powder | Step 1 end product |
+| Iron Ore | Solid (heavy) | Shaker down |
+| Coal | Slushy (heavy) | Shaker down; needs 2 molten iron neighbors |
+| Crushed Iron | Solid | Press product; smelter feed |
+| Molten Iron | Liquid | Smelter product; two neighbors of coal |
+| Steel | Solid (heavy) | Step 1 end product |

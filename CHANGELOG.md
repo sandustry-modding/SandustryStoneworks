@@ -2,11 +2,13 @@
 
 ## 0.0.3
 
-- Added: Steel line step 1 — **Crushed Iron**, **Molten Steel**, **Steel**.
+- Added: Steel line step 1 — **Crushed Iron**, **Molten Iron**, **Steel**.
 - Added: Kinetic Press recipe (Iron Ore → Crushed Iron).
-- Added: Smelter recipe (Crushed Iron → Molten Steel).
-- Added: Contact (Molten Steel + Coal → Steel).
+- Added: Smelter recipe (Crushed Iron → Molten Iron).
+- Added: Neighbor rule — coal with **2 molten iron** neighbors → steel (net **2 : 1**, no middle step).
 - Added: [`docs/steel.md`](docs/steel.md) with mermaid gameplay loops.
+- Changed: **Coal** is heavy **Slushy** (density 280).
+- Changed: **Iron Ore**, **Crushed Iron**, and **Steel** use **Solid** matter (density 350 / 240 / 280) so they fall fast and stay heavy.
 
 ## 0.0.2
 

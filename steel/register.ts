@@ -2,7 +2,7 @@ import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
 
 const api = sandkit.api;
 
-/** Register steel powder (step 1 end product). */
+/** Register steel (heavy solid; step 1 end product). */
 export function register(): void {
   api.i18n.register("en", {
     [NAME_KEY.steel]: "Steel",
@@ -12,7 +12,7 @@ export function register(): void {
     id: ELEMENT.steel,
     nameKey: NAME_KEY.steel,
     density: 280,
-    matterType: sandkit.enums.MatterType.Powder,
+    matterType: sandkit.enums.MatterType.Solid,
     metaColor: 0x8a949e,
     colors: {
       variants: [

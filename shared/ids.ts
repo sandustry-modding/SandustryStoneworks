@@ -8,7 +8,7 @@ export const ELEMENT = {
   ironOre: `${root}:ironOre`,
   coal: `${root}:coal`,
   crushedIron: `${root}:crushedIron`,
-  moltenSteel: `${root}:moltenSteel`,
+  moltenIron: `${root}:moltenIron`,
   steel: `${root}:steel`,
 } as const;
 
@@ -18,6 +18,6 @@ export const NAME_KEY = {
   ironOre: `${root}.element.ironOre.name`,
   coal: `${root}.element.coal.name`,
   crushedIron: `${root}.element.crushedIron.name`,
-  moltenSteel: `${root}.element.moltenSteel.name`,
+  moltenIron: `${root}.element.moltenIron.name`,
   steel: `${root}.element.steel.name`,
 } as const;

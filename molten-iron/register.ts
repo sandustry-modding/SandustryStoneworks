@@ -2,15 +2,15 @@ import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
 
 const api = sandkit.api;
 
-/** Register molten steel (smelter product from crushed iron). */
+/** Register molten iron (smelter product from crushed iron). */
 export function register(): void {
   api.i18n.register("en", {
-    [NAME_KEY.moltenSteel]: "Molten Steel",
+    [NAME_KEY.moltenIron]: "Molten Iron",
   });
 
   const { elementType } = api.elements.register({
-    id: ELEMENT.moltenSteel,
-    nameKey: NAME_KEY.moltenSteel,
+    id: ELEMENT.moltenIron,
+    nameKey: NAME_KEY.moltenIron,
     density: 220,
     matterType: sandkit.enums.MatterType.Liquid,
     metaColor: 0xff6a20,

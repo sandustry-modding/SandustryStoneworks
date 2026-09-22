@@ -3,17 +3,16 @@ import { ELEMENT } from "../shared/ids.ts";
 const api = sandkit.api;
 
 /**
- * Step 1 steel recipes:
+ * Step 1 steel machine recipes:
  * - Press: Iron Ore → Crushed Iron
- * - Smelter: Crushed Iron → Molten Steel
- * - Contact: Molten Steel + Coal → Steel (coal consumed)
+ * - Smelter: Crushed Iron → Molten Iron
+ *
+ * Steel finish (2 molten iron neighbors + 1 coal) runs on the worker.
  */
 export function register(): void {
   const ironOre = api.elements.getTypeById(ELEMENT.ironOre);
   const crushedIron = api.elements.getTypeById(ELEMENT.crushedIron);
-  const moltenSteel = api.elements.getTypeById(ELEMENT.moltenSteel);
-  const coal = api.elements.getTypeById(ELEMENT.coal);
-  const steel = api.elements.getTypeById(ELEMENT.steel);
+  const moltenIron = api.elements.getTypeById(ELEMENT.moltenIron);
 
   api.structures.recipes.register("kineticPress", {
     input: ironOre,
@@ -23,14 +22,6 @@ export function register(): void {
 
   api.structures.recipes.register("smelter", {
     input: crushedIron,
-    outputs: [{ elementType: moltenSteel, chance: 1 }],
-  });
-
-  api.reactions.registerContact({
-    inputA: moltenSteel,
-    inputB: coal,
-    outputA: steel,
-    outputB: null,
-    orientation: "any",
+    outputs: [{ elementType: moltenIron, chance: 1 }],
   });
 }

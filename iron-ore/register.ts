@@ -2,7 +2,7 @@ import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
 
 const api = sandkit.api;
 
-/** Register iron ore powder (rare shaker out; no refine yet). */
+/** Register iron ore (heavy solid; shaker down). */
 export function register(): void {
   api.i18n.register("en", {
     [NAME_KEY.ironOre]: "Iron Ore",
@@ -11,8 +11,8 @@ export function register(): void {
   const { elementType } = api.elements.register({
     id: ELEMENT.ironOre,
     nameKey: NAME_KEY.ironOre,
-    density: 260,
-    matterType: sandkit.enums.MatterType.Powder,
+    density: 350,
+    matterType: sandkit.enums.MatterType.Solid,
     metaColor: 0xba8873,
     colors: {
       // Clay terracotta from #a78787 with more chroma
