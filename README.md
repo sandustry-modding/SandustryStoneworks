@@ -1,13 +1,13 @@
-# Stone Gravel (tmp)
+# Stoneworks
 
-Temporary stone refining line for Sandustry.
+Stone refining for Sandustry.
 Vanilla **Stone** has no dig output.
 This mod drops **Gravel** when stone is drilled or lasered.
 Belt gravel onto a **Shaker** for crushed stone, iron ore, or coal.
 
 ## Status
 
-Experiment / `tmp` id.
+Early experiment.
 
 ## Current behavior (v0.0.2)
 
@@ -21,7 +21,7 @@ Experiment / `tmp` id.
 
 ## Options
 
-- **Mod enabled** — turn the mod off without unsubscribing.
+- **Mod enabled** — turn Stoneworks off without unsubscribing.
 
 ## Folder layout
 

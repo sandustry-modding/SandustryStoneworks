@@ -9,5 +9,5 @@ if (isEnabled()) {
   registerCrushedStone();
   registerIronOre();
   registerCoal();
-  sandkit.api.ui.toast("Stone Gravel (tmp) — shake gravel → crushed stone / iron / coal", {});
+  sandkit.api.ui.toast("Stoneworks — shake gravel → crushed stone / iron / coal", {});
 }
