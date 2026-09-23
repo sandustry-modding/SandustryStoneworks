@@ -1,4 +1,4 @@
-import { ELEMENT } from "../shared/ids.ts";
+import { ELEMENT } from "../../../shared/ids.ts";
 
 const NEIGHBOR_OFFSETS: ReadonlyArray<readonly [number, number]> = [
   [0, -1],

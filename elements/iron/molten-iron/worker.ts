@@ -1,4 +1,4 @@
-import { ELEMENT } from "../shared/ids.ts";
+import { ELEMENT } from "../../../shared/ids.ts";
 
 /** Lava duration in seconds, and the empty-neighbor fire chance on each pulse. */
 const PULSE_SECONDS = 0.28;

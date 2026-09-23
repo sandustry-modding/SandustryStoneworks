@@ -1,4 +1,4 @@
-import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
+import { ELEMENT, NAME_KEY } from "../../../shared/ids.ts";
 
 const api = sandkit.api;
 

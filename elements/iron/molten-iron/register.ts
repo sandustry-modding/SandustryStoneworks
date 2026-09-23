@@ -1,4 +1,4 @@
-import { ELEMENT, NAME_KEY } from "../shared/ids.ts";
+import { ELEMENT, NAME_KEY } from "../../../shared/ids.ts";
 
 const api = sandkit.api;
 
@@ -8,7 +8,7 @@ export function register(): void {
     [NAME_KEY.moltenIron]: "Molten Iron",
   });
 
-  const definition = {
+  const { elementType } = api.elements.register({
     id: ELEMENT.moltenIron,
     nameKey: NAME_KEY.moltenIron,
     density: 220,
@@ -27,8 +27,7 @@ export function register(): void {
     },
     isGrabbable: true,
     isTransportable: true,
-  };
-  const { elementType } = api.elements.register(definition);
+  });
 
   api.discoveries.addElementByType(elementType);
 }

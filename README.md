@@ -39,14 +39,14 @@ Design notes live in [`docs/ideas.md`](docs/ideas.md).
 | `main.ts` | Thin entry; calls feature registers when enabled |
 | `modinfo.ts` | Manifest and config schema |
 | `shared/` | Element ids and i18n keys |
-| `gravel/` | Gravel element + Stone dig output |
-| `crushed-stone/` | Crushed Stone element |
-| `iron-ore/` | Iron Ore element |
-| `coal/` | Coal element |
-| `crushed-iron/` | Crushed Iron element |
-| `molten-iron/` | Molten Iron element |
-| `iron/` | Iron element (cooled molten) |
-| `steel/` | Steel element + step 1 recipes |
+| `elements/stone/gravel/` | Gravel element + Stone dig output |
+| `elements/stone/crushed-stone/` | Crushed Stone element |
+| `elements/iron/iron-ore/` | Iron Ore element |
+| `elements/iron/crushed-iron/` | Crushed Iron element |
+| `elements/iron/molten-iron/` | Molten Iron element |
+| `elements/iron/iron/` | Iron element (cooled molten) |
+| `elements/coal/coal/` | Coal element |
+| `elements/steel/steel/` | Steel element + step 1 recipes |
 | `docs/` | Design notes (`ideas.md`, `steel.md`) |
 | `shaker/` | Worker: exclusive even pick on gravel |
 | `worker.ts` | Worker entry |
