@@ -3,25 +3,36 @@ import { ELEMENT } from "../shared/ids.ts";
 const api = sandkit.api;
 
 /**
- * Step 1 steel machine recipes:
- * - Press: Iron Ore → Crushed Iron
- * - Smelter: Crushed Iron → Molten Iron
+ * Step 1 steel machine recipe:
+ * - Smelter: Iron Ore → Molten Iron
+ * - Smelter: Iron → Molten Iron (remelt cooled metal)
+ * - Water + Molten Iron → Steam + Iron (quench)
  *
- * Steel finish (2 molten iron neighbors + 1 coal) runs on the worker.
+ * A light residue cell on top of a fresh melt, and the 2-neighbor steel
+ * finish, both run on the worker.
  */
 export function register(): void {
   const ironOre = api.elements.getTypeById(ELEMENT.ironOre);
-  const crushedIron = api.elements.getTypeById(ELEMENT.crushedIron);
   const moltenIron = api.elements.getTypeById(ELEMENT.moltenIron);
+  const iron = api.elements.getTypeById(ELEMENT.iron);
+  const water = api.elements.getTypeById("water");
+  const steam = api.elements.getTypeById("steam");
 
-  api.structures.recipes.register("kineticPress", {
+  api.structures.recipes.register("smelter", {
     input: ironOre,
-    minimumDownwardVelocity: 20,
-    outputs: [{ elementType: crushedIron, chance: 1 }],
+    outputs: [{ elementType: moltenIron, chance: 1 }],
   });
 
   api.structures.recipes.register("smelter", {
-    input: crushedIron,
+    input: iron,
     outputs: [{ elementType: moltenIron, chance: 1 }],
+  });
+
+  api.reactions.registerContact({
+    inputA: water,
+    inputB: moltenIron,
+    outputA: steam,
+    outputB: iron,
+    orientation: "any",
   });
 }

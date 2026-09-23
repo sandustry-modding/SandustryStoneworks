@@ -12,7 +12,7 @@ Steel loop details and diagrams: [`docs/steel.md`](docs/steel.md).
 Early experiment.
 Design notes live in [`docs/ideas.md`](docs/ideas.md).
 
-## Current behavior (v0.0.3)
+## Current behavior (v0.0.5)
 
 - Registers **Gravel** (mod **slushy**, like wet sand — grabbable, belt-friendly).
 - Sets Stone excavation `output` to gravel at chance `1`.
@@ -22,8 +22,10 @@ Design notes live in [`docs/ideas.md`](docs/ideas.md).
   - **Iron Ore** / **Coal** — eject below (even odds with crushed stone)
   - Crushed Stone density **120** (lighter than gravel **150**)
 - Steel line (step 1):
-  - **Kinetic Press:** Iron Ore → **Crushed Iron**
-  - **Smelter:** Crushed Iron → **Molten Iron** (needs heat)
+  - **Smelter:** Iron Ore → **Molten Iron** (needs heat)
+  - **Residue:** one light cell on top of a fresh melt (on the pool surface if molten iron already covers the smelter)
+  - **Cool:** Molten Iron becomes **Iron** after a short time away from heat (smelter / lava / fire), or instantly when it touches **Water** (water → steam)
+  - **Remelt:** Smelter melts **Iron** back into **Molten Iron**
   - **Neighbor rule:** Coal with **2 molten iron** neighbors → **Steel** (consumes coal + both irons)
 
 ## Options
@@ -43,6 +45,7 @@ Design notes live in [`docs/ideas.md`](docs/ideas.md).
 | `coal/` | Coal element |
 | `crushed-iron/` | Crushed Iron element |
 | `molten-iron/` | Molten Iron element |
+| `iron/` | Iron element (cooled molten) |
 | `steel/` | Steel element + step 1 recipes |
 | `docs/` | Design notes (`ideas.md`, `steel.md`) |
 | `shaker/` | Worker: exclusive even pick on gravel |
