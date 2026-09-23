@@ -33,7 +33,7 @@ type ExpireArgs = {
  * Without heat, it solidifies into Iron after a few pulses.
  */
 export function registerWorker(): void {
-  const api = sandkit.api as unknown as WorkerSandkitApi;
+  const api = sandkit.api;
   const moltenIron = api.elements.getTypeById(ELEMENT.moltenIron);
   const iron = api.elements.getTypeById(ELEMENT.iron);
   const fire = api.elements.getTypeById("fire");
@@ -134,7 +134,7 @@ export function registerWorker(): void {
       }
 
       const heat = api.elements.getDataFieldAtCell(x, y, HEAT_FIELD);
-      if (heat > 1) {
+      if (heat != null && heat > 1) {
         api.elements.setDataFieldAtCell(x, y, HEAT_FIELD, heat - 1);
         keepMolten(x, y);
         context.cancel();
